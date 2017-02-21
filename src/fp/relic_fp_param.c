@@ -508,6 +508,7 @@ void fp_param_set(int param) {
 				f[7] = 256;
 				fp_prime_set_pmers(f, 8);
 				break;
+#endif
 #if (FP_PRIME == 256 || defined(BN_FAMILY))
 			case BN_256:
 				/* x = 6000000000001F2D. */
