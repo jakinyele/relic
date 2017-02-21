@@ -606,11 +606,13 @@ void ep_param_set(int param) {
 				plain = 1;
 				break;
 #endif
-#if defined(EP_ENDOM) && (FP_PRIME == 256 || defined(BN_FAMILY))
+#if defined(EP_ENDOM) && FP_PRIME == 256
 			case SECG_K256:
 				ASSIGNK(SECG_K256, SECG_256);
 				endom = 1;
 				break;
+#endif
+#if defined(EP_ENDOM) && (FP_PRIME == 256 || defined(BN_FAMILY))
 			case BN_P256:
 				ASSIGNK(BN_P256, BN_256);
 				endom = 1;
