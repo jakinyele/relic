@@ -120,6 +120,9 @@
 /** Build cryptographic protocols. */
 #cmakedefine WITH_CP
 
+/** Support all BN family of curves */
+#cmakedefine BN_FAMILY
+
 /** Easy C-only backend. */
 #define EASY	 1
 /** GMP backend. */
