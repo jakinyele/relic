@@ -660,7 +660,7 @@ void fp_param_set(int param) {
 				fp_prime_set_pmers(f, 2);
 				break;
 #endif
-#if FP_PRIME == 638 || defined(BN_FAMILY))
+#if (FP_PRIME == 638 || defined(BN_FAMILY))
 			case BN_638:
 				fp_param_get_var(t0);
 				/* p = 36 * x^4 + 36 * x^3 + 24 * x^2 + 6 * x + 1. */
