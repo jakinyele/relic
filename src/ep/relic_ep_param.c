@@ -675,6 +675,8 @@ void ep_param_set(int param) {
 				ASSIGNK(BN_P638, BN_638);
 				endom = 1;
 				break;
+#endif
+#if defined(EP_ENDOM) && FP_PRIME == 638
 			case B12_P638:
 				ASSIGNK(B12_P638, B12_638);
 				endom = 1;
