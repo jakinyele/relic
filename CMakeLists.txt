@@ -38,6 +38,7 @@ message("   SHLIB=[off|on] Build shared library.")
 message("   STLIB=[off|on] Build static library.")
 message("   STBIN=[off|on] Build static binaries.")
 message("   AMALG=[off|on] Build amalgamation for better performance.\n")
+message("   BN_FAMILY=[off|on] Build support for BN family of curves.")
 
 option(DEBUG "Build with debugging support" off)
 option(PROFL "Build with profiling support" off)
@@ -54,6 +55,7 @@ option(SHLIB "Build shared library" on)
 option(STLIB "Build static library" on)
 option(STBIN "Build static binaries" off)
 option(AMALG "Build amalgamation" off)
+option(BN_FAMILY "Build support for all BN family of curves" off)
 
 message(STATUS "Number of times each test or benchmark is ran (default = 50, 1000):\n")
 
@@ -414,3 +416,5 @@ endif(TESTS GREATER 0)
 if(BENCH GREATER 0)
 	add_subdirectory(bench)
 endif(BENCH GREATER 0)
+
+

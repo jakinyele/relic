@@ -344,7 +344,7 @@ void fp_param_set(int param) {
 		core_get()->fp_id = param;
 
 		switch (param) {
-#if FP_PRIME == 158
+#if (FP_PRIME == 158 || defined(BN_FAMILY))
 			case BN_158:
 				/* x = 4000000031. */
 				fp_param_get_var(t0);
@@ -365,7 +365,8 @@ void fp_param_set(int param) {
 				bn_add(p, p, t1);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 160
+#endif
+#if FP_PRIME == 160
 			case SECG_160:
 				/* p = 2^160 - 2^31 + 1. */
 				f[0] = -1;
@@ -387,7 +388,8 @@ void fp_param_set(int param) {
 				f[9] = 160;
 				fp_prime_set_pmers(f, 10);
 				break;
-#elif FP_PRIME == 192
+#endif
+#if FP_PRIME == 192
 			case NIST_192:
 				/* p = 2^192 - 2^64 - 1. */
 				f[0] = -1;
@@ -407,7 +409,8 @@ void fp_param_set(int param) {
 				f[7] = 192;
 				fp_prime_set_pmers(f, 8);
 				break;
-#elif FP_PRIME == 221
+#endif
+#if FP_PRIME == 221
 			case PRIME_22103:
 				bn_set_2b(p, 221);
 				bn_sub_dig(p, p, 3);
@@ -446,7 +449,7 @@ void fp_param_set(int param) {
 				bn_sub_dig(p, p, 9);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 254
+#elif (FP_PRIME == 254 || defined(BN_FAMILY))
 			case BN_254:
 				/* x = -4080000000000001. */
 				fp_param_get_var(t0);

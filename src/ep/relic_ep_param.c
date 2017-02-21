@@ -295,7 +295,7 @@
 /** @} */
 #endif
 
-#if defined(EP_ENDOM) && FP_PRIME == 158
+#if defined(EP_ENDOM) && (FP_PRIME == 158 || defined(BN_FAMILY))
 /**
  * Parameters for a 158-bit pairing-friendly prime curve.
  */
@@ -311,7 +311,7 @@
 /** @} */
 #endif
 
-#if defined(EP_ENDOM) && FP_PRIME == 254
+#if defined(EP_ENDOM) && (FP_PRIME == 254 || defined(BN_FAMILY))
 /**
  * Parameters for a 254-bit pairing-friendly prime curve.
  */
@@ -327,7 +327,7 @@
 /** @} */
 #endif
 
-#if defined(EP_ENDOM) && FP_PRIME == 256
+#if defined(EP_ENDOM) && (FP_PRIME == 256 || defined(BN_FAMILY))
 /**
  * Parameters for a 256-bit pairing-friendly prime curve.
  */
@@ -343,7 +343,7 @@
 /** @} */
 #endif
 
-#if defined(EP_ENDOM) && FP_PRIME == 382
+#if defined(EP_ENDOM) && (FP_PRIME == 382 || defined(BN_FAMILY))
 /**
  * Parameters for a 256-bit pairing-friendly prime curve.
  */
@@ -406,7 +406,7 @@
 /** @} */
 #endif
 
-#if defined(EP_ENDOM) && FP_PRIME == 638
+#if defined(EP_ENDOM) && (FP_PRIME == 638 || defined(BN_FAMILY))
 /**
  * Parameters for a 638-bit pairing-friendly prime curve.
  *
@@ -524,7 +524,7 @@ void ep_param_set(int param) {
 		core_get()->ep_id = 0;
 
 		switch (param) {
-#if defined(EP_ENDOM) && FP_PRIME == 158
+#if defined(EP_ENDOM) && (FP_PRIME == 158 || defined(BN_FAMILY))
 			case BN_P158:
 				ASSIGNK(BN_P158, BN_158);
 				endom = 1;
@@ -578,7 +578,7 @@ void ep_param_set(int param) {
 				plain = 1;
 				break;
 #endif
-#if defined(EP_ENDOM) && FP_PRIME == 254
+#if defined(EP_ENDOM) && (FP_PRIME == 254 || defined(BN_FAMILY))
 			case BN_P254:
 				ASSIGNK(BN_P254, BN_254);
 				endom = 1;
@@ -606,7 +606,7 @@ void ep_param_set(int param) {
 				plain = 1;
 				break;
 #endif
-#if defined(EP_ENDOM) && FP_PRIME == 256
+#if defined(EP_ENDOM) && (FP_PRIME == 256 || defined(BN_FAMILY))
 			case SECG_K256:
 				ASSIGNK(SECG_K256, SECG_256);
 				endom = 1;
@@ -616,13 +616,13 @@ void ep_param_set(int param) {
 				endom = 1;
 				break;
 #endif
-#if defined(EP_PLAIN) & FP_PRIME == 382
+#if defined(EP_PLAIN) && FP_PRIME == 382
 			case CURVE_67254:
 				ASSIGN(CURVE_67254, PRIME_382105);
 				plain = 1;
 				break;
 #endif
-#if defined(EP_ENDOM) & FP_PRIME == 382
+#if defined(EP_ENDOM) && (FP_PRIME == 382 || defined(BN_FAMILY))
 			case BN_P382:
 				ASSIGNK(BN_P382, BN_382);
 				endom = 1;
@@ -670,7 +670,7 @@ void ep_param_set(int param) {
 				plain = 1;
 				break;
 #endif
-#if defined(EP_ENDOM) && FP_PRIME == 638
+#if defined(EP_ENDOM) && (FP_PRIME == 638 || defined(BN_FAMILY))
 			case BN_P638:
 				ASSIGNK(BN_P638, BN_638);
 				endom = 1;
