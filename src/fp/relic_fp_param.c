@@ -482,7 +482,7 @@ void fp_param_set(int param) {
 				fp_prime_set_dense(p);
 				break;
 #endif
-#if (FP_PRIME == 256 || defined(BN_FAMILY))
+#if FP_PRIME == 256
 			case NIST_256:
 				/* p = 2^256 - 2^224 + 2^192 + 2^96 - 1. */
 				f[0] = -1;
@@ -492,8 +492,6 @@ void fp_param_set(int param) {
 				f[4] = 256;
 				fp_prime_set_pmers(f, 5);
 				break;
-#endif
-#if FP_PRIME == 256
 			case BSI_256:
 				bn_read_str(p, BSI_P256, strlen(BSI_P256), 16);
 				fp_prime_set_dense(p);
@@ -510,6 +508,7 @@ void fp_param_set(int param) {
 				f[7] = 256;
 				fp_prime_set_pmers(f, 8);
 				break;
+#if (FP_PRIME == 256 || defined(BN_FAMILY))
 			case BN_256:
 				/* x = 6000000000001F2D. */
 				fp_param_get_var(t0);
