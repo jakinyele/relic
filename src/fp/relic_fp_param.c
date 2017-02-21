@@ -416,7 +416,8 @@ void fp_param_set(int param) {
 				bn_sub_dig(p, p, 3);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 224
+#endif
+#if FP_PRIME == 224
 			case NIST_224:
 				/* p = 2^224 - 2^96 + 1. */
 				f[0] = 1;
@@ -437,19 +438,22 @@ void fp_param_set(int param) {
 				f[8] = 224;
 				fp_prime_set_pmers(f, 9);
 				break;
-#elif FP_PRIME == 226
+#endif
+#if FP_PRIME == 226
 			case PRIME_22605:
 				bn_set_2b(p, 226);
 				bn_sub_dig(p, p, 5);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 251
+#endif
+#if FP_PRIME == 251
 			case PRIME_25109:
 				bn_set_2b(p, 251);
 				bn_sub_dig(p, p, 9);
 				fp_prime_set_dense(p);
 				break;
-#elif (FP_PRIME == 254 || defined(BN_FAMILY))
+#endif
+#if (FP_PRIME == 254 || defined(BN_FAMILY))
 			case BN_254:
 				/* x = -4080000000000001. */
 				fp_param_get_var(t0);
@@ -470,13 +474,15 @@ void fp_param_set(int param) {
 				bn_add(p, p, t1);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 255
+#endif
+#if FP_PRIME == 255
 			case PRIME_25519:
 				bn_set_2b(p, 255);
 				bn_sub_dig(p, p, 19);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 256
+#endif
+#if (FP_PRIME == 256 || defined(BN_FAMILY))
 			case NIST_256:
 				/* p = 2^256 - 2^224 + 2^192 + 2^96 - 1. */
 				f[0] = -1;
@@ -486,6 +492,8 @@ void fp_param_set(int param) {
 				f[4] = 256;
 				fp_prime_set_pmers(f, 5);
 				break;
+#endif
+#if FP_PRIME == 256
 			case BSI_256:
 				bn_read_str(p, BSI_P256, strlen(BSI_P256), 16);
 				fp_prime_set_dense(p);
@@ -522,12 +530,15 @@ void fp_param_set(int param) {
 				bn_add(p, p, t1);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 382
+#endif
+#if FP_PRIME == 382
 			case PRIME_382105:
 				bn_set_2b(p, 382);
 				bn_sub_dig(p, p, 105);
 				fp_prime_set_dense(p);
 				break;
+#endif
+#if (FP_PRIME == 382 || defined(BN_FAMILY))
 			case BN_382:
 				/* x = -400040090001000000000001. */
 				fp_param_get_var(t0);
@@ -548,13 +559,15 @@ void fp_param_set(int param) {
 				bn_add(p, p, t1);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 383
+#endif
+#if FP_PRIME == 383
 			case PRIME_383187:
 				bn_set_2b(p, 383);
 				bn_sub_dig(p, p, 187);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 384
+#endif
+#if FP_PRIME == 384
 			case NIST_384:
 				/* p = 2^384 - 2^128 - 2^96 + 2^32 - 1. */
 				f[0] = -1;
@@ -564,7 +577,8 @@ void fp_param_set(int param) {
 				f[4] = 384;
 				fp_prime_set_pmers(f, 5);
 				break;
-#elif FP_PRIME == 477
+#endif
+#if FP_PRIME == 477
 			case B24_477:
 				fp_param_get_var(t0);
 				/* p = (u - 1)^2 * (u^8 - u^4 + 1) div 3 + u. */
@@ -580,7 +594,8 @@ void fp_param_set(int param) {
 				bn_add(p, p, t0);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 455
+#endif
+#if FP_PRIME == 455
 			case B12_455:
 				fp_param_get_var(t0);
 				/* p = (x^2 - 2x + 1) * (x^4 - x^2 + 1)/3 + x. */
@@ -596,7 +611,8 @@ void fp_param_set(int param) {
 				bn_add(p, p, t0);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 508
+#endif
+#if FP_PRIME == 508
 			case KSS_508:
 				fp_param_get_var(t0);
 				/* h = (49*u^2 + 245 * u + 343)/3 */
@@ -628,20 +644,23 @@ void fp_param_set(int param) {
 				bn_sub_dig(p, p, 1);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 511
+#endif
+#if FP_PRIME == 511
 			case PRIME_511187:
 				bn_set_2b(p, 511);
 				bn_sub_dig(p, p, 187);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 521
+#endif
+#if FP_PRIME == 521
 			case NIST_521:
 				/* p = 2^521 - 1. */
 				f[0] = -1;
 				f[1] = 521;
 				fp_prime_set_pmers(f, 2);
 				break;
-#elif FP_PRIME == 638
+#endif
+#if FP_PRIME == 638 || defined(BN_FAMILY))
 			case BN_638:
 				fp_param_get_var(t0);
 				/* p = 36 * x^4 + 36 * x^3 + 24 * x^2 + 6 * x + 1. */
@@ -661,6 +680,8 @@ void fp_param_set(int param) {
 				bn_add(p, p, t1);
 				fp_prime_set_dense(p);
 				break;
+#endif
+#if FP_PRIME == 638
 			case B12_638:
 				fp_param_get_var(t0);
 				/* p = (x^2 - 2x + 1) * (x^4 - x^2 + 1)/3 + x. */
@@ -676,7 +697,8 @@ void fp_param_set(int param) {
 				bn_add(p, p, t0);
 				fp_prime_set_dense(p);
 				break;
-#elif FP_PRIME == 1536
+#endif
+#if FP_PRIME == 1536
 			case SS_1536:
 				fp_param_get_var(t0);
 				bn_read_str(p, SS_P1536, strlen(SS_P1536), 16);
@@ -685,12 +707,11 @@ void fp_param_set(int param) {
 				bn_sub_dig(p, p, 1);
 				fp_prime_set_dense(p);
 				break;
-#else
+#endif
 			default:
 				fp_param_set_any_dense();
 				core_get()->fp_id = 0;
 				break;
-#endif
 		}
 	}
 	CATCH_ANY {
